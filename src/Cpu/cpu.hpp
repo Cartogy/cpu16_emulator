@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <iostream>
 #include "InstructionMemory/instruction_memory.hpp"
 
@@ -13,6 +14,6 @@ class CPU {
 	public:
 		CPU();
 		void exec();
-		void fetch_instruction(InstructionMemory& ins_mem);
+		void fetch_instruction(InstructionMemory<uint16_t>& ins_mem);
 		void reg_val(uint16_t val, uint16_t reg_index);
 };

@@ -1,4 +1,5 @@
 #include "cpu.hpp"
+#include <cstdint>
 void CPU::exec() {
 	// acquire the current instruction
 	uint16_t ins = current_instruction;
@@ -9,7 +10,7 @@ void CPU::reg_val(uint16_t val, uint16_t reg_index) {
 	registers[reg_index] = val;
 }
 
-void CPU::fetch_instruction(InstructionMemory& ins_mem) {
+void CPU::fetch_instruction(InstructionMemory<uint16_t>& ins_mem) {
 }
 
 CPU::CPU() {

@@ -4,13 +4,36 @@
 
 #define _MAX_INSTRUCTIONS 256
 
+template <typename T>
 class InstructionMemory {
 	private:
-		std::vector<uint16_t> instruction_memory;
+		std::vector<T> instruction_memory;
 	public:
 		InstructionMemory();
-		uint16_t get_instruction(uint16_t index);
-		void add_instruction(uint16_t ins);
-		uint16_t total_instructions();
+		T get_instruction(size_t index);
+		void add_instruction(T ins);
+		size_t total_instructions();
 };
 
+/* Include in Header to avoid having to initialize all the possible instructions */
+
+template <typename T>
+InstructionMemory<T>::InstructionMemory() {
+	instruction_memory.reserve(_MAX_INSTRUCTIONS);
+}
+
+// Has no Error Checking!
+template <typename T>
+T InstructionMemory<T>::get_instruction(size_t index){
+	return instruction_memory[index];
+}
+
+template <typename T>
+void InstructionMemory<T>::add_instruction(T ins) {
+	instruction_memory.push_back(ins);
+}
+
+template <typename T>
+size_t InstructionMemory<T>::total_instructions() {
+	return instruction_memory.size();
+}
