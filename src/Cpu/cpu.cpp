@@ -58,3 +58,7 @@ CPU::CPU() {
 		registers[i] = 0;
 	}
 }
+
+uint16_t CPU::get_program_counter() {
+	return program_counter;
+}

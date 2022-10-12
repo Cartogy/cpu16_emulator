@@ -16,4 +16,5 @@ class CPU {
 		void exec();
 		void fetch_instruction(InstructionMemory<uint16_t>& ins_mem);
 		void reg_val(uint16_t val, uint16_t reg_index);
+		uint16_t get_program_counter();
 };
