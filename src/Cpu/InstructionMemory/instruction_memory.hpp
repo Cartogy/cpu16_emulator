@@ -15,7 +15,7 @@ class InstructionMemory {
 		size_t total_instructions();
 };
 
-/* Include in Header to avoid having to initialize all the possible instructions */
+/* Include in Header to avoid having to initialize all the possible instruction types */
 
 template <typename T>
 InstructionMemory<T>::InstructionMemory() {

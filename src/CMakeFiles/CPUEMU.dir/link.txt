@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/CPUEMU.dir/main.cpp.o CMakeFiles/CPUEMU.dir/emu_utils.cpp.o -o CPUEMU  Cpu/libcpu.a 
