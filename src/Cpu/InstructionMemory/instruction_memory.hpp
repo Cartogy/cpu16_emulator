@@ -13,6 +13,7 @@ class InstructionMemory {
 		T get_instruction(size_t index);
 		void add_instruction(T ins);
 		size_t total_instructions();
+		void clear();
 };
 
 /* Include in Header to avoid having to initialize all the possible instruction types */
@@ -36,4 +37,9 @@ void InstructionMemory<T>::add_instruction(T ins) {
 template <typename T>
 size_t InstructionMemory<T>::total_instructions() {
 	return instruction_memory.size();
+}
+
+template <typename T>
+void InstructionMemory<T>::clear() {
+	instruction_memory.clear();
 }

@@ -1,0 +1,14 @@
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/CMakeFiles/CPUEMU.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/CMakeFiles/edit_cache.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/CMakeFiles/rebuild_cache.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/Cpu/CMakeFiles/cpu.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/Cpu/CMakeFiles/edit_cache.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/Cpu/CMakeFiles/rebuild_cache.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/Cpu/InstructionMemory/CMakeFiles/edit_cache.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/Cpu/InstructionMemory/CMakeFiles/rebuild_cache.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/Memory/CMakeFiles/memory.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/Memory/CMakeFiles/edit_cache.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/Memory/CMakeFiles/rebuild_cache.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/OperatorTable/CMakeFiles/operators.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/OperatorTable/CMakeFiles/edit_cache.dir
+/home/jonas/Dev/Programming/cpp/emu/cpu16/src/out/build/OperatorTable/CMakeFiles/rebuild_cache.dir

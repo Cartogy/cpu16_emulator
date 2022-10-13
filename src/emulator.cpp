@@ -1,0 +1,41 @@
+#include "emulator.hpp"
+
+Emulator::Emulator(uint16_t total_ops) : cpu(), ins_mem(), oper_table(total_ops) {}
+
+void Emulator::execute_clock_cycle() {
+	// Fetch first instruction
+	cpu.fetch_instruction(ins_mem);
+	uint16_t *pc_pointer = cpu.get_pc_address();
+
+	uint16_t ins = cpu.get_current_instruction();
+	
+	// extract OpCode
+	uint16_t bit_range_four = 15;
+	uint16_t shift_to_op = 12;
+
+	// isolate the opcode => 1010 0000 0000 0000
+	uint16_t op_code = (bit_range_four << shift_to_op) & ins;
+	// have opcode become the sole focus
+	op_code = op_code >> shift_to_op;
+
+	Operator* op_func = oper_table.get_operator(op_code);
+	op_func->func(pc_pointer, cpu.get_registers(), mem);
+}
+
+void Emulator::run() {
+}
+
+void Emulator::translate_instructions(std::string file_path) {
+}
+
+void Emulator::add_instruction(uint16_t ins) {
+	ins_mem.add_instruction(ins);
+}
+
+void Emulator::clear_instructions() {
+	ins_mem.clear();
+}
+
+void Emulator::clear_cpu() {
+	cpu.reset();
+}

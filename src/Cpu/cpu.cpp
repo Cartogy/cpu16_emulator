@@ -54,11 +54,21 @@ void CPU::fetch_instruction(InstructionMemory<uint16_t>& ins_mem) {
 CPU::CPU() {
 	current_instruction = 0;
 	program_counter = 0;
-	for(int i = 0; i < _MAX_REGISTERS; i++) {
-		registers[i] = 0;
-	}
+
+	reset();
 }
 
 uint16_t CPU::get_program_counter() {
 	return program_counter;
+}
+
+uint16_t *CPU::get_pc_address() {
+	uint16_t *pc_pointer = &program_counter;
+	return pc_pointer;
+}
+
+void CPU::reset() {
+	for(int i = 0; i < _MAX_REGISTERS; i++) {
+		registers[i] = 0;
+	}
 }

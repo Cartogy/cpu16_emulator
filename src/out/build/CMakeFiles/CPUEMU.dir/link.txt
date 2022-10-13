@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/CPUEMU.dir/main.o CMakeFiles/CPUEMU.dir/emu_utils.o CMakeFiles/CPUEMU.dir/emulator.o CMakeFiles/CPUEMU.dir/my_emulator.o -o CPUEMU  Cpu/libcpu.a 

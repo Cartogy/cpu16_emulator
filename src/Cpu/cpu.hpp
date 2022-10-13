@@ -1,3 +1,6 @@
+#ifndef MY_CPU
+#define MY_CPU
+
 #include <cstdint>
 #include <iostream>
 #include "InstructionMemory/instruction_memory.hpp"
@@ -17,4 +20,10 @@ class CPU {
 		void fetch_instruction(InstructionMemory<uint16_t>& ins_mem);
 		void reg_val(uint16_t val, uint16_t reg_index);
 		uint16_t get_program_counter();
+		uint16_t *get_registers();
+		uint16_t *get_pc_address();
+		uint16_t get_current_instruction();
+
+		void reset();
 };
+#endif

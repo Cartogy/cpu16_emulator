@@ -2,14 +2,19 @@
 
 class OpAdd: public Operator {
 public:
-	void func(uint16_t& pc, uint16_t *regs, Memory& mem) {
+	OpAdd(uint16_t p_id) : Operator(p_id) {
+	}
+	void func(uint16_t* pc, uint16_t *regs, Memory& mem) {
 		std::cout << "ADD" << std::endl;
 	}
 };
 
 class OpSub: public Operator {
 public:
-	void func(uint16_t& pc, uint16_t *regs, Memory& mem) {
+
+	OpSub(uint16_t p_id) : Operator(p_id) {}
+
+	void func(uint16_t* pc, uint16_t *regs, Memory& mem) {
 		std::cout << "Sub" << std::endl;
 	}
 };
