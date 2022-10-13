@@ -89,9 +89,13 @@ class OpAddI : public Operator {
 		OpAddI(uint16_t p_id) : Operator(p_id) {}
 
 		void func(uint16_t* pc, uint16_t *regs, uint16_t ins, Memory& mem) {
+			uint16_t src_one = i_reg_one(ins);
+			uint16_t dst = i_reg_two(ins);
+			uint16_t imm_val = i_imm(ins);
+
+			regs[dst] = regs[src_one] + imm_val;
 
 			std::cout << "AddI" << std::endl;
-			std::cout << "Not yet implemented." << std::endl;
 		}
 };
 
@@ -100,9 +104,13 @@ class OpSubI : public Operator {
 		OpSubI(uint16_t p_id) : Operator(p_id) {}
 
 		void func(uint16_t* pc, uint16_t *regs, uint16_t ins, Memory& mem) {
+			uint16_t src_one = i_reg_one(ins);
+			uint16_t dst = i_reg_two(ins);
+			uint16_t imm_val = i_imm(ins);
+
+			regs[dst] = regs[src_one] - imm_val;
 
 			std::cout << "SubI" << std::endl;
-			std::cout << "Not yet implemented." << std::endl;
 		}
 };
 
@@ -122,8 +130,18 @@ class OpJmp : public Operator {
 		OpJmp(uint16_t p_id) : Operator(p_id) {}
 
 		void func(uint16_t* pc, uint16_t *regs, uint16_t ins, Memory& mem) {
+			uint16_t jmp_address = j_addr(ins);
+			// Use left-most bit to decide to add or subtract.
+			// 2048 -> 0000 1000 0000 0000
+			if (2048 & jmp_address) {
+				// subtract from jmp address.
+				// 0000 1000 0000 0000 XOR 1000 0000 0001 => 0000 0000 0000 0001
+				jmp_address = jmp_address ^ 2048;
+				*pc = *pc - jmp_address;
+			} else {
+				*pc = *pc + jmp_address;
+			}
 
 			std::cout << "Jump" << std::endl;
-			std::cout << "Not yet implemented." << std::endl;
 		}
 };
