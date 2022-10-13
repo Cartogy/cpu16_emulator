@@ -11,6 +11,6 @@ class Operator {
 	public:
 		Operator(uint16_t p_id);
 		uint16_t get_id();
-		virtual void func(uint16_t* pc, uint16_t *regs, Memory& mem) = 0;
+		virtual void func(uint16_t* pc, uint16_t *regs, uint16_t ins, Memory& mem) = 0;
 };
 #endif

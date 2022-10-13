@@ -24,7 +24,7 @@ void Emulator::execute_clock_cycle() {
 	if (op_func == nullptr) {
 		std::cout << "Invalid operator selected" << std::endl;
 	} else {
-		op_func->func(pc_pointer, cpu.get_registers(), mem);
+		op_func->func(pc_pointer, cpu.get_registers(), ins, mem);
 	}
 }
 
