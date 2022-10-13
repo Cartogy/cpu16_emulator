@@ -45,3 +45,41 @@
 * jmp =>  |0010|++++++++++++|
 * X   =>  |0011|++++++++++++|
 
+# Architecture
+
+The central component is the **Emulator** that connects all the components required to emulate a Von Neumann Architecture CPU.
+
+## Emulator
+
+The Emulator is an *abstract class*. For every new CPU and the specified Instruction Set, a new class (e.g., Emulator16) will have to be defined.
+This has been done with the **Emulator16** class
+
+### Emulator16
+The **Emulator16** provides a set of possible operations that the cpu can execute.
+These operators are stored in a **OperatorTable**.
+
+## OperatorTable
+An **OperatorTable** is a *map* to all the possible operations that the cpu can execute.
+The map stores **Operator**s which are *abstract classes*.
+
+The motive for this OperatorTable and the Operator objects was to avoid
+the use of if/else to decide which operator to apply on the cpu and its registers.
+
+### Operator
+The **Operator** is an abstract class.
+The derived class would provide the actual operation.
+For example: OpAdd would implement the function *func* to apply the add operation.
+
+## CPU
+
+The CPU contains the:
+* Program Counter
+* Registers
+* Current Instruction
+
+Before executing, the CPU must fetch the next instruction from the **InstructionMemory**.
+
+## InstructionMemory
+
+The **InstructionMemory** stores all the available instructions for the CPU to execute.
+
