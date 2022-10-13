@@ -7,7 +7,7 @@ class Emulator16 : public Emulator {
 			instruction_set();
 		}
 		void instruction_set() {
-			// Ensure the operators are created in the stack.
+			// Ensure the operators are created in the heap.
 			std::unique_ptr<Operator> add(new OpAdd(4));
 			std::unique_ptr<Operator> sub(new OpSub(5));
 
