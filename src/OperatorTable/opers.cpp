@@ -114,14 +114,21 @@ class OpSubI : public Operator {
 		}
 };
 
+// DUe to the immediate value only having 2^4 bits, the maximum branch must be 15 lines away from the original branching instruction.
 class OpBranchEqual : public Operator {
 	public:
 		OpBranchEqual(uint16_t p_id) : Operator(p_id) {}
 
 		void func(uint16_t* pc, uint16_t *regs, uint16_t ins, Memory& mem) {
+			uint16_t reg_one = i_reg_one(ins);
+			uint16_t reg_two = i_reg_two(ins);
+			uint16_t offset = i_imm(ins);
+
+			if (regs[reg_one] == regs[reg_two]) {
+				*pc = *pc + offset;
+			}
 
 			std::cout << "BranchEqual" << std::endl;
-			std::cout << "Not yet implemented." << std::endl;
 		}
 };
 
