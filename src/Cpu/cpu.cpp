@@ -72,3 +72,13 @@ void CPU::reset() {
 		registers[i] = 0;
 	}
 }
+
+
+uint16_t *CPU::get_registers() {
+	return registers;
+}
+
+
+uint16_t CPU::get_current_instruction() {
+	return current_instruction;
+}

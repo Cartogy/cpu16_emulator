@@ -19,7 +19,12 @@ void Emulator::execute_clock_cycle() {
 	op_code = op_code >> shift_to_op;
 
 	Operator* op_func = oper_table.get_operator(op_code);
-	op_func->func(pc_pointer, cpu.get_registers(), mem);
+
+	if (op_func == nullptr) {
+		std::cout << "Invalid operator selected" << std::endl;
+	} else {
+		(*op_func).func(pc_pointer, cpu.get_registers(), mem);
+	}
 }
 
 void Emulator::run() {
@@ -38,4 +43,11 @@ void Emulator::clear_instructions() {
 
 void Emulator::clear_cpu() {
 	cpu.reset();
+}
+
+CPU& Emulator::get_cpu() {
+	return cpu;
+}
+void Emulator::add_operator(Operator &op) {
+	oper_table.add_operator(op);
 }

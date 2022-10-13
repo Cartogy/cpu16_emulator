@@ -3,11 +3,13 @@
 
 class Emulator16 : public Emulator {
 	public:
-		Emulator16(uint16_t total_ops) : Emulator(total_ops) {}
+		Emulator16(uint16_t total_ops) : Emulator(total_ops) {
+			instruction_set();
+		}
 		void instruction_set() {
 			OpAdd add(4);
 			OpSub sub(5);
-			add_operator(&add);
-			add_operator(&sub);
+			add_operator(add);
+			add_operator(sub);
 		}
 };

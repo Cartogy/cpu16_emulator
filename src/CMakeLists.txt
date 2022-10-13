@@ -7,3 +7,5 @@ add_subdirectory(Memory)
 add_subdirectory(OperatorTable)
 
 target_link_libraries(${PROJECT_NAME} cpu)
+target_link_libraries(${PROJECT_NAME} operators)
+target_link_libraries(${PROJECT_NAME} memory)

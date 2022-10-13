@@ -9,8 +9,8 @@ OperatorTable::OperatorTable(int p_limit) {
 	}
 }
 
-void OperatorTable::add_operator(Operator *op) {
-	uint16_t id = op->get_id();
+void OperatorTable::add_operator(Operator &op) {
+	uint16_t id = op.get_id();
 
 	if (operators[id] == nullptr) {
 		operators[id] = op;

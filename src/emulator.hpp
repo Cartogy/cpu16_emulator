@@ -8,8 +8,8 @@
 class Emulator {
 	private:
 		CPU cpu;
-		InstructionMemory<uint16_t> ins_mem;
 		OperatorTable oper_table;
+		InstructionMemory<uint16_t> ins_mem;
 		Memory mem;
 		//Parser parser;
 	public:
@@ -25,7 +25,7 @@ class Emulator {
 		void translate_instructions(std::string file_path);
 		void add_instruction(uint16_t ins);
 
-		void add_operator(Operator *op);
+		void add_operator(Operator &op);
 
 		void clear_instructions();
 		void clear_cpu();
