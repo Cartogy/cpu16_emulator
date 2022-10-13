@@ -1,4 +1,5 @@
 #include "emulator.hpp"
+#include <memory>
 
 Emulator::Emulator(uint16_t total_ops) : cpu(), ins_mem(), oper_table(total_ops) {}
 
@@ -23,7 +24,7 @@ void Emulator::execute_clock_cycle() {
 	if (op_func == nullptr) {
 		std::cout << "Invalid operator selected" << std::endl;
 	} else {
-		(*op_func).func(pc_pointer, cpu.get_registers(), mem);
+		op_func->func(pc_pointer, cpu.get_registers(), mem);
 	}
 }
 
@@ -48,6 +49,7 @@ void Emulator::clear_cpu() {
 CPU& Emulator::get_cpu() {
 	return cpu;
 }
-void Emulator::add_operator(Operator &op) {
-	oper_table.add_operator(op);
+void Emulator::add_operator(std::unique_ptr<Operator> op) {
+	// Ensure the Operator Table owns the operators.
+	oper_table.add_operator(std::move(op));
 }

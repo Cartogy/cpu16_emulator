@@ -1,3 +1,4 @@
+/* use of references ideal as we don't pant to change the pointer when calling func */
 #ifndef OPERATOR
 #define OPERATOR
 #include <iostream>

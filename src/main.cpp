@@ -13,10 +13,10 @@ int main() {
 	int x = 0;
 	int y = 2;
 
-	//emu16.add_instruction(add_ins_one);
-	//emu16.add_instruction(add_ins_one);
-	//emu16.add_instruction(add_ins_one);
-	//emu16.add_instruction(add_ins_one);
+	emu16.add_instruction(add_ins_one);
+	emu16.add_instruction(add_ins_one);
+	emu16.add_instruction(add_ins_one);
+	emu16.add_instruction(add_ins_one);
 
 	emu16.get_cpu().reg_val(1, 1);
 

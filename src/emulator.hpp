@@ -25,7 +25,7 @@ class Emulator {
 		void translate_instructions(std::string file_path);
 		void add_instruction(uint16_t ins);
 
-		void add_operator(Operator &op);
+		void add_operator(std::unique_ptr<Operator> op);
 
 		void clear_instructions();
 		void clear_cpu();

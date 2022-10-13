@@ -7,9 +7,12 @@ class Emulator16 : public Emulator {
 			instruction_set();
 		}
 		void instruction_set() {
-			OpAdd add(4);
-			OpSub sub(5);
-			add_operator(add);
-			add_operator(sub);
+			// Ensure the operators are created in the stack.
+			std::unique_ptr<Operator> add(new OpAdd(4));
+			std::unique_ptr<Operator> sub(new OpSub(5));
+
+			// Pass ownership of operators to the OperatorTable.
+			add_operator(std::move(add));
+			add_operator(std::move(sub));
 		}
 };

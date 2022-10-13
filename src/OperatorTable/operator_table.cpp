@@ -1,4 +1,5 @@
 #include "operator_table.hpp"
+#include <memory>
 
 OperatorTable::OperatorTable(int p_limit) {
 	operators.reserve(p_limit);
@@ -9,17 +10,20 @@ OperatorTable::OperatorTable(int p_limit) {
 	}
 }
 
-void OperatorTable::add_operator(Operator &op) {
-	uint16_t id = op.get_id();
+void OperatorTable::add_operator(std::unique_ptr<Operator> op) {
+	uint16_t id = op->get_id();
 
 	if (operators[id] == nullptr) {
-		operators[id] = op;
+		// Have the array own the op object.
+		operators[id] = std::move(op);
 	} else {
 		std::cout << "Operator ID already occupied" << std::endl;
 	}
 }
 
 Operator* OperatorTable::get_operator(int id) {
-	return operators[id];
+	// Pass the raw pointer.
+	// Assumption: This pointer is not meant to be stored by the caller.
+	return operators[id].get();
 }
 
