@@ -62,8 +62,8 @@ These operators are stored in a **OperatorTable**.
 An **OperatorTable** is a *map* to all the possible operations that the cpu can execute.
 The map stores **Operator**s which are *abstract classes*.
 
-The motive for this OperatorTable and the Operator objects was to avoid
-the use of if/else to decide which operator to apply on the cpu and its registers.
+The motive for the OperatorTable and the Operator objects is to avoid
+the use of *if/else* to decide which operator to apply on the cpu and its registers.
 
 ### Operator
 The **Operator** is an abstract class.
@@ -83,3 +83,13 @@ Before executing, the CPU must fetch the next instruction from the **Instruction
 
 The **InstructionMemory** stores all the available instructions for the CPU to execute.
 
+
+
+# Functionality to Add
+
+Much of the functionality is still a work in progress.
+
+* [ ] Parse a text file with instructions to translate them to uint16_t, in order to add them to the InstructionMemory.
+* [ ] Implement the *run* function in Emulator to emulate the repeated execution of instructions.
+
+* [ ] (Improve/organize use of CMake)
