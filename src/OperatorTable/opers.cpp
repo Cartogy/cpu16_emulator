@@ -12,7 +12,7 @@ public:
 		uint16_t dst = r_dst(ins);
 
 		regs[dst] = regs[reg_1] + regs[reg_2];
-		std::cout << "ADD" << std::endl;
+		std::cout << "Add" << std::endl;
 	}
 };
 
@@ -67,9 +67,15 @@ class OpLoad : public Operator {
 		OpLoad(uint16_t p_id) : Operator(p_id) {}
 
 		void func(uint16_t* pc, uint16_t *regs, uint16_t ins, Memory& mem) {
+			uint16_t dst_reg = i_reg_one(ins);
+			uint16_t base_reg = i_reg_two(ins);
+			uint16_t offset = i_imm(ins);
+
+			uint16_t from_address = base_reg+offset;
+
+			regs[dst_reg] = mem.load(from_address);
 
 			std::cout << "Load" << std::endl;
-			std::cout << "Not yet implemented." << std::endl;
 		}
 };
 
@@ -78,9 +84,15 @@ class OpStore : public Operator {
 		OpStore(uint16_t p_id) : Operator(p_id) {}
 
 		void func(uint16_t* pc, uint16_t *regs, uint16_t ins, Memory& mem) {
+			uint16_t src_reg = i_reg_one(ins);
+			uint16_t base_reg = i_reg_two(ins);
+			uint16_t offset = i_imm(ins);
+
+			uint16_t to_address = base_reg+offset;
+
+			mem.store(to_address, regs[src_reg]);
 
 			std::cout << "Store" << std::endl;
-			std::cout << "Not yet implemented." << std::endl;
 		}
 };
 
