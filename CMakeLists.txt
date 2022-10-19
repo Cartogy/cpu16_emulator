@@ -5,6 +5,7 @@ project(cpu_emulator)
 
 
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_EXPORT_COMPILE_COMMANDS True)
 
 include(FetchContent)
 FetchContent_Declare(

@@ -1,3 +1,5 @@
+#ifndef INSTRUCTION_MEMORY
+#define INSTRUCTION_MEMORY
 
 #include <vector>
 #include <iostream>
@@ -43,3 +45,5 @@ template <typename T>
 void InstructionMemory<T>::clear() {
 	instruction_memory.clear();
 }
+
+#endif

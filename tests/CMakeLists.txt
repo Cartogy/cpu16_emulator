@@ -1,6 +1,6 @@
 
 
-add_executable(test_stuff test.cc memory_test.cc)
+add_executable(test_stuff test.cc memory_test.cc cpu_test.cc)
 
 target_link_libraries(test_stuff GTest::gtest_main src)
 
