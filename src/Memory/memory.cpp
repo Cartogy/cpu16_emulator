@@ -42,3 +42,11 @@ uint16_t Memory::load(uint16_t from_address) {
 		return memory[from_address];
 	}
 }
+
+const std::vector<uint16_t> Memory::get_memory() {
+	return memory;
+}
+
+uint16_t Memory::get_max_memory() {
+	return max_memory;
+}
