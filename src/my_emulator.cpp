@@ -1,5 +1,5 @@
-#include "emulator.hpp"
-#include "emu_opers.cpp"
+#include "Emulator/emulator.hpp"
+#include "emu_operator.hpp"
 
 class Emulator16 : public Emulator {
 	public:

@@ -1,5 +1,6 @@
-#include "emulator.hpp"
 #include <memory>
+
+#include "emulator.hpp"
 
 Emulator::Emulator(uint16_t total_ops) : cpu(), ins_mem(), oper_table(total_ops) {}
 

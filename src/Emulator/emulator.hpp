@@ -1,9 +1,10 @@
 #ifndef EMULATOR
 #define EMULATOR
 
+#include <cstdint>
+
 #include "Cpu/cpu.hpp"
 #include "OperatorTable/operator_table.hpp"
-#include <cstdint>
 
 class Emulator {
 	private:
