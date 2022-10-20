@@ -3,7 +3,7 @@
 #define OPERATOR
 #include <iostream>
 
-#include "../Memory/memory.hpp"
+#include "../../Memory/memory.hpp"
 
 class Operator {
 	private:

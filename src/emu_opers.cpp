@@ -1,6 +1,7 @@
-#include "operator.hpp"
-#include "oper_utils.hpp"
 #include <cstdint>
+
+#include "OperatorTable/Operator/operator.hpp"
+#include "OperatorTable/oper_utils.hpp"
 
 class OpAdd: public Operator {
 public:

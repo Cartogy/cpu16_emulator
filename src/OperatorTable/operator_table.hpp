@@ -1,6 +1,6 @@
 #include <memory>
 #include <vector>
-#include "operator.hpp"
+#include "Operator/operator.hpp"
 #define MAX_OPERATORS_POSSIBLE 100
 
 
@@ -13,5 +13,7 @@ class OperatorTable {
 	public:
 		OperatorTable(int p_limit);
 		void add_operator(std::unique_ptr<Operator> op);
+		// We want to specify that whoever acquires the pointer to the operator is not meant to own it.
+		// 
 		Operator* get_operator(int id);
 };
