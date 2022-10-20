@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "Operator/operator.hpp"
 #include "emu_operator.hpp"
 #include "emu_utils.hpp"
