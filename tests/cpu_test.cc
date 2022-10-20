@@ -10,6 +10,10 @@ class CPUTest : public ::testing::Test {
 
 	void SetUp() override {
 		cpu = CPU();
+		ins_mem = InstructionMemory<uint16_t>();
+		ins_mem.add_instruction(10);
+		ins_mem.add_instruction(18);
+		ins_mem.add_instruction(30);
 	}
 };
 
@@ -33,6 +37,16 @@ TEST_F(CPUTest, RegisterValues) {
 }
 
 TEST_F(CPUTest, CPUInstructionMemory) {
-	EXPECT_TRUE(false);
+	cpu.fetch_instruction(ins_mem);
+	EXPECT_EQ(10, cpu.get_current_instruction());
+	EXPECT_EQ(1, *(cpu.get_pc_address()));
+
+	cpu.fetch_instruction(ins_mem);
+	EXPECT_EQ(18, cpu.get_current_instruction());
+	EXPECT_EQ(2, *(cpu.get_pc_address()));
+
+	cpu.fetch_instruction(ins_mem);
+	EXPECT_EQ(30, cpu.get_current_instruction());
+	EXPECT_EQ(3, *(cpu.get_pc_address()));
 }
 

@@ -25,7 +25,7 @@ InstructionMemory<T>::InstructionMemory() {
 	instruction_memory.reserve(_MAX_INSTRUCTIONS);
 }
 
-// Has no Error Checking!
+//TODO: Has no Error Checking!
 template <typename T>
 T InstructionMemory<T>::get_instruction(size_t index){
 	return instruction_memory[index];
