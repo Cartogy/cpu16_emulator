@@ -33,12 +33,13 @@ class ErrorToken : public Token {
 		void set_error_message(std::string msg);
 };
 
-class Tokenizer {
-	private:
-		std::pair<Token *,size_t> tokenize_lexeme(size_t line_num, std::string source);
-		std::pair<std::vector<Token *>,std::pair<std::vector<ErrorToken *>,size_t>> tokenize_line(size_t line_num, std::string source);
-		std::pair<std::vector<Token *>,std::vector<ErrorToken *>> tokenize_source(std::string);
+std::pair<Token *, size_t> tokenize_lexeme(size_t line_num, std::string source);
 
+std::pair<std::vector<Token *>,std::pair<std::vector<ErrorToken *>,size_t>> tokenize_line(size_t line_num, std::string source);
+
+std::pair<std::vector<Token *>,std::vector<ErrorToken *>> tokenize_source(std::string);
+
+class Tokenizer {
 	public:
 		void tokenize_file(std::string file_name);
 

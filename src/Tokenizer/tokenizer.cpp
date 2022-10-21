@@ -31,12 +31,12 @@ void ErrorToken::set_error_message(std::string msg) {
 }
 
 /* Tokenizer */
-std::pair<Token *,size_t> Tokenizer::tokenize_lexeme(size_t line_num, std::string source) {
+std::pair<Token *,size_t> tokenize_lexeme(size_t line_num, std::string source) {
 	size_t end;
 	size_t index = line_num;
 
 	// Find the end of the word.
-	while(source[index] != ' ' || source[index] != '\n' || source[index] != EOF) {
+	while(source[index] != ' ' && source[index] != '\n' && source[index] != EOF) {
 		index++;
 	}
 	end = index;

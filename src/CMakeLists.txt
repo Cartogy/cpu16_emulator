@@ -7,11 +7,12 @@ add_subdirectory(Cpu)
 add_subdirectory(Memory)
 add_subdirectory(OperatorTable)
 add_subdirectory(Emulator)
+add_subdirectory(Tokenizer)
 
 # Have the executable be linked with the project executable
 ## Have to link all the libraries you want to include.
-target_link_libraries(${PROJECT_NAME} cpu operator_table operator memory emulator)
+target_link_libraries(${PROJECT_NAME} cpu operator_table operator memory emulator tokenizer)
 # Have libraries be associated with 'src'.
-target_link_libraries(src cpu memory operator_table operator emulator)
+target_link_libraries(src cpu memory operator_table operator emulator tokenizer)
 
 target_include_directories(${PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
