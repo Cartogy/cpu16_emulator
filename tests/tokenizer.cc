@@ -12,10 +12,22 @@ TEST(TokenizerTest, LexemeOper){
 	OperToken oper_tok_mul = OperToken(0, "mul");
 
 	// Test add OperToken.
-	// TODO: Fix Cor dump from the below line.
+	// TODO: Fix Core dump from the below line [x].
 	std::pair<Token *, size_t> toks = tokenize_lexeme(0, test_source_one);
 
-	/*TODO: Go over static_cast and dynamic_cast */
-	//ASSERT_FALSE(static_cast<OperToken *>(toks.first) == nullptr);
-//	EXPECT_STREQ(oper_tok_add.get_lexeme().c_str(), toks.first->get_lexeme().c_str());
+	/*TODO: Go over static_cast and dynamic_cast [ ] */
+	ASSERT_FALSE(static_cast<OperToken *>(toks.first) == nullptr);
+	EXPECT_STREQ(oper_tok_add.get_lexeme().c_str(), toks.first->get_lexeme().c_str());
+
+	// destroy the dynamically allocated Token
+	delete toks.first;
+
+	toks = tokenize_lexeme(0, test_source_two);
+
+	ASSERT_FALSE(static_cast<OperToken *>(toks.first) == nullptr);
+	EXPECT_STREQ(oper_tok_subi.get_lexeme().c_str(), toks.first->get_lexeme().c_str());
+	delete toks.first;
+
+	toks = tokenize_lexeme(0, test_source_three);
+
 }
