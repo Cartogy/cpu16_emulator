@@ -3,6 +3,8 @@
 #include <map>
 
 struct ParserNode {
+	private:
+		std::string node_type;
 	public:
 		struct Register{
 			size_t reg;
@@ -11,6 +13,8 @@ struct ParserNode {
 		struct Constant {
 			size_t constant;
 		};
+		void set_node_type(std::string n_type);
+		std::string get_node_type();
 
 };
 

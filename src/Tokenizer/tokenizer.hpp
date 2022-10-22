@@ -11,6 +11,9 @@ class Token {
 		~Token();
 		std::string get_lexeme();
 		size_t get_line_position();
+
+		// By having the base class have a virtual function, we make it become polymorphic.
+		virtual void token_information();
 };
 
 class RegToken : public Token {
@@ -21,6 +24,11 @@ class RegToken : public Token {
 class OperToken : public Token {
 	public:
 		OperToken(size_t p_line, std::string lex);
+};
+
+class NumberToken : public Token {
+	public:
+		NumberToken(size_t p_line, std::string lex);
 };
 
 class ErrorToken : public Token {

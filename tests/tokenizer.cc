@@ -142,3 +142,31 @@ TEST_F(TokenLineTest, TokenizeLineMultiple) {
 	next_index = tok_line_two.tokenize_line(16, test_source_one);
 	EXPECT_EQ(31, next_index);
 }
+
+TEST(TokenizerTest, TokenizeSource) {
+	std::string test_source = "add $r0 $r1 $r2\nsub $r0 $r0 $r1\naddi $r0 $r1 14\nmul $r0 $r3 $r3";
+
+	std::vector<TokenLine *> tok_source = tokenize_source(test_source);
+	std::cout << tok_source.size();
+
+	ASSERT_EQ(4, tok_source.size());
+}
+
+TEST(TokenizerTest, TokenizeSourceCheck) {
+	std::string test_source = "add $r0 $r1 $r2\nsub $r0 $r0 $r1\ndiv $r0 $r1 $r2\nmul $r0 $r3 $r3";
+	std::vector<TokenLine *> tok_source = tokenize_source(test_source);
+
+	// expected lexemes
+
+	for(int i = 0; i < tok_source.size(); i++) {
+		TokenLine *tok_line = tok_source[i];
+		std::vector<Token *> tokens = tok_line->get_tokens();
+		// Verify it is the correct token.
+		ASSERT_FALSE(dynamic_cast<OperToken *>(tokens[0]) == nullptr);
+		ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[1]) == nullptr);
+		ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[2]) == nullptr);
+		ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[3]) == nullptr);
+
+		// Verify it is the expected token.
+	}
+}
