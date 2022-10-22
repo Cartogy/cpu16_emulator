@@ -66,7 +66,14 @@ std::pair<Token *, size_t> tokenize_lexeme(size_t src_index, std::string source)
 std::vector<TokenLine *> tokenize_source(std::string);
 
 class Tokenizer {
+	private:
+		std::vector<TokenLine *> src_tokens;
+		void clear_tokens();
 	public:
+		Tokenizer();
+		~Tokenizer();
 		void tokenize_file(std::string file_name);
 
+		size_t total_tokens();
+		std::vector<TokenLine *> get_tokens();
 };

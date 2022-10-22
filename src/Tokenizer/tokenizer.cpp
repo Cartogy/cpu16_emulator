@@ -1,5 +1,6 @@
-#include "tokenizer.hpp"
 #include <sstream>
+#include <fstream>
+#include "tokenizer.hpp"
 
 /* Token */
 Token::Token(size_t p_line, std::string lex) {
@@ -175,4 +176,51 @@ std::vector<TokenLine *> tokenize_source(std::string source) {
 	}
 
 	return src_tokens;
+}
+
+Tokenizer::Tokenizer() {
+}
+
+// De-allocate the dynamically-allocated token lines.
+Tokenizer::~Tokenizer() {
+	if (src_tokens.size() > 0) {
+		clear_tokens();
+	}
+}
+
+void Tokenizer::clear_tokens() {
+		for(int i = 0; i < src_tokens.size(); i++) {
+			delete src_tokens[i];
+		}
+		src_tokens.clear();
+}
+
+size_t Tokenizer::total_tokens() {
+	return src_tokens.size();
+}
+
+std::vector<TokenLine *> Tokenizer::get_tokens() {
+	return src_tokens;
+}
+
+void Tokenizer::tokenize_file(std::string file_name) {
+	if ( src_tokens.size() > 0) {
+		clear_tokens();
+	}
+
+	std::ifstream input_stream;
+	input_stream.open(file_name);
+
+	std::vector<TokenLine *> tok_line;
+
+	std::string line;
+
+	std::stringstream src_string;
+	if (input_stream.is_open()) {
+		src_string << input_stream.rdbuf();
+
+		tok_line = tokenize_source(src_string.str());
+	}
+
+	src_tokens = tok_line;
 }

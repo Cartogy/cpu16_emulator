@@ -170,3 +170,91 @@ TEST(TokenizerTest, TokenizeSourceCheck) {
 		// Verify it is the expected token.
 	}
 }
+
+class TokenizerObjTest : public ::testing::Test {
+	protected:
+		std::string file_name = "test_asm.asm";
+		Tokenizer tokenizer;
+};
+
+TEST_F(TokenizerObjTest, TokenizeFileAllTokens) {
+	tokenizer.tokenize_file(file_name);
+
+	EXPECT_EQ(4, tokenizer.get_tokens().size());
+}
+
+TEST_F(TokenizerObjTest, TokenizeFileCorrectTokens) {
+	tokenizer.tokenize_file(file_name);	
+
+	std::vector<TokenLine *> token_lines = tokenizer.get_tokens();
+
+	ASSERT_EQ(4, token_lines.size());
+
+	// First Line
+	TokenLine *first_line = token_lines[0];
+
+	//// Errors
+	std::vector<ErrorToken *> errors = first_line->get_errors();
+	ASSERT_EQ(0, errors.size());
+
+	//// Tokens
+	std::vector<Token *> tokens = first_line->get_tokens();
+	ASSERT_EQ(4, tokens.size());
+
+	////// Oper Token
+	ASSERT_FALSE(dynamic_cast<OperToken *>(tokens[0]) == nullptr);
+	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[1]) == nullptr);
+	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[2]) == nullptr);
+	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[3]) == nullptr);
+
+
+
+	TokenLine *second_line = token_lines[1];
+
+	//// Errors
+	errors = second_line->get_errors();
+	ASSERT_EQ(0, errors.size());
+
+	//// Tokens
+	tokens = second_line->get_tokens();
+	ASSERT_EQ(4, tokens.size());
+
+	////// Oper Token
+	ASSERT_FALSE(dynamic_cast<OperToken *>(tokens[0]) == nullptr);
+	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[1]) == nullptr);
+	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[2]) == nullptr);
+	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[3]) == nullptr);
+
+	TokenLine *third_line = token_lines[2];
+	
+	//// Errors
+	errors = third_line->get_errors();
+	ASSERT_EQ(0, errors.size());
+
+	//// Tokens
+	tokens = third_line->get_tokens();
+	ASSERT_EQ(4, tokens.size());
+
+	////// Oper Token
+	ASSERT_FALSE(dynamic_cast<OperToken *>(tokens[0]) == nullptr);
+	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[1]) == nullptr);
+	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[2]) == nullptr);
+	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[3]) == nullptr);
+
+	TokenLine *fourth_line = token_lines[3];
+	
+	//// Errors
+	errors = fourth_line->get_errors();
+	ASSERT_EQ(0, errors.size());
+
+	//// Tokens
+	tokens = fourth_line->get_tokens();
+	ASSERT_EQ(4, tokens.size());
+
+	////// Oper Token
+	ASSERT_FALSE(dynamic_cast<OperToken *>(tokens[0]) == nullptr);
+	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[1]) == nullptr);
+	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[2]) == nullptr);
+	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[3]) == nullptr);
+
+}
