@@ -85,7 +85,7 @@ class TokenLineTest : public ::testing::Test {
 		TokenLine tk_line;
 };
 
-TEST_F(TokenLineTest, TokenizeLine) {
+TEST_F(TokenLineTest, TokenizeLineSingle) {
 	std::string test_source_one = "add $r0 $r1 $r2";
 
 	OperToken add = OperToken(0, "add");
@@ -129,4 +129,16 @@ TEST_F(TokenLineTest, TokenizeLine) {
 	ASSERT_FALSE(reg_token_two == nullptr);
 	EXPECT_STREQ(r2.get_lexeme().c_str(), reg_token_two->get_lexeme().c_str());
 	EXPECT_EQ(r2.get_line_position(), reg_token_two->get_line_position());
+}
+
+TEST_F(TokenLineTest, TokenizeLineMultiple) {
+	std::string test_source_one = "add $r0 $r1 $r2\nsub $r0 $r0 $r1";
+
+	TokenLine tok_line_one;
+	TokenLine tok_line_two;
+
+	size_t next_index = tok_line_one.tokenize_line(0, test_source_one);
+	EXPECT_EQ(15, next_index);
+	next_index = tok_line_two.tokenize_line(16, test_source_one);
+	EXPECT_EQ(31, next_index);
 }

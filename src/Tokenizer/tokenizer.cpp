@@ -121,7 +121,6 @@ size_t TokenLine::tokenize_line(size_t src_index, std::string source) {
 		// Advance to the next word
 		if (source[index] == ' ') {
 			index++;
-			std::cout << "next letter: " << source[index] << std::endl;
 		}
 	}
 	// Store the end point of the line. (i.e., the index stand on either '\n' or EOF or '\0'
