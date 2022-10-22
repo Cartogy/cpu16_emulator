@@ -80,7 +80,12 @@ TEST(TokenizerTest, LexemeError) {
 
 }
 
-TEST(TokenizerTest, TokenizeLine) {
+class TokenLineTest : public ::testing::Test {
+	protected:
+		TokenLine tk_line;
+};
+
+TEST_F(TokenLineTest, TokenizeLine) {
 	std::string test_source_one = "add $r0 $r1 $r2";
 
 	OperToken add = OperToken(0, "add");
@@ -88,18 +93,18 @@ TEST(TokenizerTest, TokenizeLine) {
 	RegToken r1 = RegToken(8, "$r1");
 	RegToken r2 = RegToken(12, "$r2");
 
-	std::pair<std::vector<Token *>, std::pair<std::vector<ErrorToken *>, size_t>> tok_line;
+	TokenLine tok_line;
 
-	tok_line = tokenize_line(0, test_source_one);
+	size_t next_index = tok_line.tokenize_line(0, test_source_one);
 
 	// Ensure no errors
-	EXPECT_EQ(0, tok_line.second.first.size());
+	EXPECT_EQ(0, tok_line.get_errors().size());
 	// Ensure the next index is correct.
-	EXPECT_EQ(15, tok_line.second.second);
+	EXPECT_EQ(15, next_index);
 
 	// Test correct tokens.
 
-	std::vector<Token *> tokens = tok_line.first;
+	std::vector<Token *> tokens = tok_line.get_tokens();
 	// Test OperToken
 	OperToken * oper_token = static_cast<OperToken *>(tokens[0]);
 	//1) correct type of token.

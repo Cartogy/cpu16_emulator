@@ -84,23 +84,37 @@ std::pair<Token *,size_t> tokenize_lexeme(size_t src_index, std::string source) 
 	return tok_and_next_line;
 }
 
-std::pair<std::vector<Token *>,std::pair<std::vector<ErrorToken *>,size_t>> tokenize_line(size_t src_index, std::string source) {
+TokenLine::TokenLine() {}
+
+void TokenLine::set_line(size_t p_line) {
+	line = p_line;
+}
+
+void TokenLine::add_token(ErrorToken * error) {
+	errors.push_back(error);
+}
+
+void TokenLine::add_token(Token * token) {
+	tokens.push_back(token);
+}
+
+std::vector<Token *> TokenLine::get_tokens() {
+	return tokens;
+}
+
+std::vector<ErrorToken *> TokenLine::get_errors() {
+	return errors;
+}
+
+size_t TokenLine::tokenize_line(size_t src_index, std::string source) {
 	int index = src_index;
-	std::vector<Token *> tokens;
-	std::vector<ErrorToken *> error_tokens;
 
 	while(source[index] != '\n' && source[index] != EOF && source[index] != '\0') {
 		// Acquire specific lexeme token.
 		std::pair<Token *, size_t> toks = tokenize_lexeme(index, source);
 
 		// Push corresponding token.
-		if (dynamic_cast<ErrorToken *>(toks.first) != nullptr) {
-			error_tokens.push_back(dynamic_cast<ErrorToken *>(toks.first));
-			std::cout << "Error: " << toks.first->get_lexeme() << std::endl;
-		} else {
-			tokens.push_back(toks.first);
-			std::cout << "Lexeme: " << toks.first->get_lexeme() << std::endl;
-		}
+		add_token(toks.first);
 
 		// Store the next index to check.
 		index = toks.second;
@@ -110,11 +124,7 @@ std::pair<std::vector<Token *>,std::pair<std::vector<ErrorToken *>,size_t>> toke
 			std::cout << "next letter: " << source[index] << std::endl;
 		}
 	}
-	std::pair<std::vector<Token *>,std::pair<std::vector<ErrorToken *>,size_t>> result;
-	result.first = tokens;
-	result.second.first = error_tokens;
 	// Store the end point of the line. (i.e., the index stand on either '\n' or EOF or '\0'
-	result.second.second = index;
 
-	return result;
+	return index;
 }

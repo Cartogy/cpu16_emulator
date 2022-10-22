@@ -38,12 +38,20 @@ class TokenLine {
 	private:
 		std::vector<ErrorToken *> errors;
 		std::vector<Token *> tokens;
+		size_t line;
 
-		void add_error(ErrorToken * error);
+		void add_token(ErrorToken * error);
 		void add_token(Token * token);
 	public:
+		TokenLine();
 
-}
+		size_t tokenize_line(size_t src_index, std::string source);
+		void set_line(size_t p_line);
+
+		std::vector<ErrorToken *> get_errors();
+		std::vector<Token *> get_tokens();
+
+};
 
 std::pair<Token *, size_t> tokenize_lexeme(size_t src_index, std::string source);
 
