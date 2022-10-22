@@ -55,9 +55,8 @@ class TokenLine {
 
 std::pair<Token *, size_t> tokenize_lexeme(size_t src_index, std::string source);
 
-std::pair<std::vector<Token *>,std::pair<std::vector<ErrorToken *>,size_t>> tokenize_line(size_t src_index, std::string source);
 
-std::pair<std::vector<Token *>,std::vector<ErrorToken *>> tokenize_source(std::string);
+std::vector<TokenLine *> tokenize_source(std::string);
 
 class Tokenizer {
 	public:

@@ -31,3 +31,9 @@
 	- It only stores data. I guess the term CPU is not really needed. In fact, the class CPU can be cut up into components: Registers, ProgramCounter, CurrentInstruction.
 	- The Emulator would need to juggle these components. For the sake of encapsulation I named them CPU, but I now realize the name is inadequate.
 	- I will keep it for now, but I may think of another way of organizing that the current 'Cpu' contains and its functionality.
+
+* When writing the TokenizeLine function, I realized it was best to implement a class that did this behaviour.
+	- The motive was when deciding which vector to put in the error/token.
+	- It also made the code a lot more readable.
+	- C++ promotes the use of classes instead of functions that return a tuple or something.
+	- Doing so cleans up the code. As noticed by returning only a TokenLine instead of a pair of stuff.
