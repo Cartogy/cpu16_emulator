@@ -31,11 +31,23 @@ class ErrorToken : public Token {
 		~ErrorToken();
 
 		void set_error_message(std::string msg);
+		std::string get_error_message();
 };
 
-std::pair<Token *, size_t> tokenize_lexeme(size_t line_num, std::string source);
+class TokenLine {
+	private:
+		std::vector<ErrorToken *> errors;
+		std::vector<Token *> tokens;
 
-std::pair<std::vector<Token *>,std::pair<std::vector<ErrorToken *>,size_t>> tokenize_line(size_t line_num, std::string source);
+		void add_error(ErrorToken * error);
+		void add_token(Token * token);
+	public:
+
+}
+
+std::pair<Token *, size_t> tokenize_lexeme(size_t src_index, std::string source);
+
+std::pair<std::vector<Token *>,std::pair<std::vector<ErrorToken *>,size_t>> tokenize_line(size_t src_index, std::string source);
 
 std::pair<std::vector<Token *>,std::vector<ErrorToken *>> tokenize_source(std::string);
 
