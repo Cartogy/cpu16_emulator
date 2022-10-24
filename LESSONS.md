@@ -37,3 +37,20 @@
 	- It also made the code a lot more readable.
 	- C++ promotes the use of classes instead of functions that return a tuple or something.
 	- Doing so cleans up the code. As noticed by returning only a TokenLine instead of a pair of stuff.
+
+* Polymorphism. I tried to use the Base pointer as a form of polymorphism to call the correct function.
+	- This seemed to work in the Tokenizer, but I am starting to believe it did not.
+	- The idea was that the compiler would be able to acquire the derived class by passing it the base pointer.
+	- This does not seem to work as I thought at first.
+	- Will need to spend more time investigating this case.
+	```
+	void func(Base *);
+	void func(Dev *);
+	Dev *d;
+	Base b = d;
+
+	func(b);
+
+	// Ideally, the func(Dev *) would be called, but in fact func(Base *) is called.
+	// I want to see if I can acquire the latter behaviout. I need to learn more about C++'s polymorphism.
+	```

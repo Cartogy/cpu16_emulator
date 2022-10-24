@@ -1,3 +1,6 @@
+#ifndef TOKENIZER
+#define TOKENIZER
+
 #include <iostream>
 #include <vector>
 #include <utility>
@@ -77,3 +80,4 @@ class Tokenizer {
 		size_t total_tokens();
 		std::vector<TokenLine *> get_tokens();
 };
+#endif

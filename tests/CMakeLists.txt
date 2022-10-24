@@ -1,6 +1,6 @@
 
 
-add_executable(test_stuff test.cc memory_test.cc cpu_test.cc instruction_memory.cc operator_test.cc operator_table_test.cc tokenizer.cc parser.cc parser_token_test.cc)
+add_executable(test_stuff test.cc memory_test.cc cpu_test.cc instruction_memory.cc operator_test.cc operator_table_test.cc tokenizer.cc parser.cc parser_token_test.cc machinecodegenerator_test.cc parsernodes_test.cc)
 
 # The use of 'src' means all libraries from 'src' are linked to 'test_stuff'.
 target_link_libraries(test_stuff GTest::gtest_main src)
