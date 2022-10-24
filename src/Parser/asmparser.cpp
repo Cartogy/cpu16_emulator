@@ -147,12 +147,14 @@ ParserNode *ASMParser::parse_line(TokenLine * token_line, ICategory* ins_cat, si
 	std::cout << "I-Type" << std::endl;
 	std::vector<Token *> toks = token_line->get_tokens();
 
+	std::cout << "Size of Token: " << toks.size() << std::endl;
+
 	Token * oper = toks[0];
 	Token * r1 = toks[1];
 	Token * r2 = toks[2];
 	Token * c = toks[3];
 
-	INode * ins_node;
+	INode * ins_node = new INode();
 	ins_node->set_node_type(oper->get_lexeme());
 
 	ParserNode::Register reg_1;
@@ -166,6 +168,8 @@ ParserNode *ASMParser::parse_line(TokenLine * token_line, ICategory* ins_cat, si
 	ins_node->reg_two = reg_2;
 	ins_node->constant = constant;
 
+	std::cout << "Made inode" << std::endl;
+
 	return ins_node;
 }
 
@@ -176,7 +180,7 @@ ParserNode *ASMParser::parse_line(TokenLine * token_line, JCategory* ins_cat, si
 	Token * oper = toks[0];
 	Token * c = toks[1];
 
-	JNode * ins_node;
+	JNode * ins_node = new JNode();
 	ins_node->set_node_type(oper->get_lexeme());
 
 	ParserNode::Constant constant;
