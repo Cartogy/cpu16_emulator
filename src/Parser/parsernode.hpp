@@ -16,24 +16,23 @@ struct ParserNode {
 		void set_node_type(std::string n_type);
 		std::string get_node_type();
 
+		virtual void node_information();
+
 };
 
 struct RNode : ParserNode {
-	private:
 		Register src_one;
 		Register src_two;
 		Register dst;
 };
 
 struct INode : ParserNode {
-	private:
 		Register reg_one;
 		Register reg_two;
 		Constant constant;
 };
 
 struct JNode : ParserNode {
-	private:
 		Constant constant;
 };
 

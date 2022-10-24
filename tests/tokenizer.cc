@@ -256,5 +256,4 @@ TEST_F(TokenizerObjTest, TokenizeFileCorrectTokens) {
 	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[1]) == nullptr);
 	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[2]) == nullptr);
 	ASSERT_FALSE(dynamic_cast<RegToken *>(tokens[3]) == nullptr);
-
 }

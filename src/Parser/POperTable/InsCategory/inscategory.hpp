@@ -5,40 +5,34 @@
 
 
 class InsCategory{
-	protected:
+	private:
 		std::vector<std::string> instructions;
 	public:
 		InsCategory();
+		~InsCategory();
 		const std::vector<std::string> get_instructions();
+		void add_instruction(std::string ins);
+
+		virtual void category_info() = 0;
 };
 
 class RCategory : public InsCategory {
 	public:
-		RCategory() {
-			instructions.push_back("add");
-			instructions.push_back("sub");
-			instructions.push_back("div");
-			instructions.push_back("mul");
-		}
+		RCategory();
+
+		void category_info(); 
 
 };
 
 class ICategory : public InsCategory {
 	public:
-		ICategory() {
-			instructions.push_back("load");
-			instructions.push_back("store");
-			instructions.push_back("addi");
-			instructions.push_back("subi");
-			instructions.push_back("bne");
+		ICategory();
 
-		}
-
+		void category_info();
 };
 
 class JCategory : public InsCategory {
 	public:
-		JCategory() {
-			instructions.push_back("jmp");
-		}
+		JCategory();
+		void category_info();
 };
