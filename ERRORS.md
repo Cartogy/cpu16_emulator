@@ -1,3 +1,5 @@
+* This error occurred when using unique pointers for Operator and POperTable
+
 In file included from /usr/include/c++/11.2.0/memory:66,
                  from /usr/include/gtest/gtest.h:57,
                  from /home/jonas/Dev/Programming/cpp/emu/cpu16/tests/emulation_test.cc:1:
