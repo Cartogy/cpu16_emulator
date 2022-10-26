@@ -1,6 +1,6 @@
 #include "emu_utils.hpp"
 #include "Cpu/cpu.hpp"
-#include "my_emulator.cpp"
+#include "emu16.hpp"
 #include <cstdint>
 
 int main() {

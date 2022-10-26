@@ -8,7 +8,7 @@
 #include "Compiler/compiler.hpp"
 
 class Emulator {
-	private:
+	protected:
 		CPU cpu;
 		OperatorTable oper_table;
 		InstructionMemory<uint16_t> ins_mem;
@@ -16,7 +16,7 @@ class Emulator {
 		Compiler compiler;
 		//Parser parser;
 	public:
-		Emulator(uint16_t total_ops);
+		Emulator(size_t total_ops);
 
 		// fills the OperatorTable with the appropriate instructions.
 		virtual void instruction_set() = 0;

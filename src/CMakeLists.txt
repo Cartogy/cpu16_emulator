@@ -1,5 +1,5 @@
 # This makes the implementation be linkable to other CMake directories.
-add_library(src main.cpp emu_utils.cpp)
+add_library(src main.cpp emu_utils.cpp emu16.cpp)
 
 add_executable(${PROJECT_NAME} main.cpp emu_utils.cpp my_emulator.cpp)
 

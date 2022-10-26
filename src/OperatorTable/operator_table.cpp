@@ -1,16 +1,19 @@
 #include "operator_table.hpp"
 #include <memory>
 
+OperatorTable::OperatorTable() {
+}
+
 OperatorTable::OperatorTable(int p_limit) {
 	operators.reserve(p_limit);
 	
 	// Initialize the array.
-	for(int i = 0; i < p_limit; i++) {
-		operators.push_back(nullptr);
-	}
+//	for(int i = 0; i < p_limit; i++) {
+//		operators.push_back(nullptr);
+	//}
 }
 
-void OperatorTable::add_operator(std::unique_ptr<Operator> op) {
+void OperatorTable::add_operator(std::shared_ptr<Operator> op) {
 	uint16_t id = op->get_id();
 
 	if (operators[id] == nullptr) {

@@ -1,15 +1,15 @@
 #include "popertable.hpp"
 
 PoperTable::PoperTable() {
-	add_category(std::unique_ptr<RCategory>(new RCategory()));
-	add_category(std::unique_ptr<ICategory>(new ICategory()));
-	add_category(std::unique_ptr<JCategory>(new JCategory()));
+	add_category(std::shared_ptr<RCategory>(new RCategory()));
+	add_category(std::shared_ptr<ICategory>(new ICategory()));
+	add_category(std::shared_ptr<JCategory>(new JCategory()));
 }
 
 PoperTable::~PoperTable() {
 }
 
-void PoperTable::add_category(std::unique_ptr<InsCategory> ins_cat) {
+void PoperTable::add_category(std::shared_ptr<InsCategory> ins_cat) {
 	for(std::string ins_name : (*ins_cat).get_instructions()) {
 		ins_categories[ins_name] = ins_cat.get();
 	}

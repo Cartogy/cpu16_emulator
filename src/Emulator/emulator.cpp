@@ -2,7 +2,7 @@
 
 #include "emulator.hpp"
 
-Emulator::Emulator(uint16_t total_ops) : cpu(), ins_mem(), oper_table(total_ops), compiler() {}
+Emulator::Emulator(size_t total_ops) : cpu(), ins_mem(),  compiler() {}
 
 void Emulator::execute_clock_cycle() {
 	// Fetch first instruction
