@@ -5,6 +5,7 @@ add_executable(emulation_test emulation_test.cc)
 
 # The use of 'src' means all libraries from 'src' are linked to 'test_stuff'.
 target_link_libraries(test_stuff GTest::gtest_main src)
+target_link_libraries(emulation_test GTest::gtest_main src)
 
 include(GoogleTest)
 gtest_discover_tests(test_stuff)

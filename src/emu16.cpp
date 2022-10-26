@@ -1,8 +1,8 @@
 #include "emu16.hpp"
 
 Emulator16::Emulator16(size_t total_ops) : Emulator(total_ops) {
-	//oper_table = OperatorTable(total_ops);
-	//instruction_set();
+	oper_table = OperatorTable(total_ops);
+	instruction_set();
 }
 
 

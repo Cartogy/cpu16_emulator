@@ -54,3 +54,10 @@
 	// Ideally, the func(Dev *) would be called, but in fact func(Base *) is called.
 	// I want to see if I can acquire the latter behaviout. I need to learn more about C++'s polymorphism.
 	```
+
+## Topics to go over
+
+* Move Semantics.
+* Shared ptr, unique ptr and weak ptr.
+* Use of Valgrind.
+* Workflow to include GDB Debugging.

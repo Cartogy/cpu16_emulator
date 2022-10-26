@@ -13,7 +13,7 @@ public:
 		uint16_t dst = r_dst(ins);
 
 		regs[dst] = regs[reg_1] + regs[reg_2];
-		std::cout << "Add" << std::endl;
+		std::cout << "Operator::Add" << std::endl;
 	}
 };
 
@@ -29,7 +29,7 @@ public:
 
 		regs[dst] = regs[reg_1] - regs[reg_2];
 
-		std::cout << "Sub" << std::endl;
+		std::cout << "Operator::Sub" << std::endl;
 	}
 };
 
@@ -44,7 +44,7 @@ class OpMul : public Operator {
 
 			regs[dst] = regs[reg_1] * regs[reg_2];
 
-			std::cout << "Mul" << std::endl;
+			std::cout << "Operator::Mul" << std::endl;
 		}
 };
 
@@ -59,7 +59,7 @@ class OpDiv : public Operator {
 
 			regs[dst] = regs[reg_1] / regs[reg_2];
 
-			std::cout << "Div" << std::endl;
+			std::cout << "Operator::Div" << std::endl;
 		}
 };
 
@@ -76,7 +76,7 @@ class OpLoad : public Operator {
 
 			regs[dst_reg] = mem.load(from_address);
 
-			std::cout << "Load" << std::endl;
+			std::cout << "Operator::Load" << std::endl;
 		}
 };
 
@@ -93,7 +93,7 @@ class OpStore : public Operator {
 
 			mem.store(to_address, regs[src_reg]);
 
-			std::cout << "Store" << std::endl;
+			std::cout << "Operator::Store" << std::endl;
 		}
 };
 
@@ -108,7 +108,7 @@ class OpAddI : public Operator {
 
 			regs[dst] = regs[src_one] + imm_val;
 
-			std::cout << "AddI" << std::endl;
+			std::cout << "Operator::AddI" << std::endl;
 		}
 };
 
@@ -123,7 +123,7 @@ class OpSubI : public Operator {
 
 			regs[dst] = regs[src_one] - imm_val;
 
-			std::cout << "SubI" << std::endl;
+			std::cout << "Operator::SubI" << std::endl;
 		}
 };
 
@@ -141,7 +141,7 @@ class OpBranchEqual : public Operator {
 				*pc = *pc + offset;
 			}
 
-			std::cout << "BranchEqual" << std::endl;
+			std::cout << "Operator::BranchEqual" << std::endl;
 		}
 };
 
@@ -162,6 +162,6 @@ class OpJmp : public Operator {
 				*pc = *pc + jmp_address;
 			}
 
-			std::cout << "Jump" << std::endl;
+			std::cout << "Operator::Jump" << std::endl;
 		}
 };
