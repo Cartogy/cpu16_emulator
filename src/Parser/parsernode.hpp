@@ -9,6 +9,9 @@ struct ParserNode {
 	private:
 		std::string node_type;
 	public:
+		ParserNode();
+		// ensures that we can call delete on the classes.
+		virtual ~ParserNode() = default;
 		struct Register{
 			size_t reg;
 		};
@@ -25,6 +28,7 @@ struct ParserNode {
 };
 
 struct RNode : ParserNode {
+		RNode();
 		Register src_one;
 		Register src_two;
 		Register dst;
@@ -33,6 +37,7 @@ struct RNode : ParserNode {
 };
 
 struct INode : ParserNode {
+	INode();
 		Register reg_one;
 		Register reg_two;
 		Constant constant;
@@ -42,6 +47,7 @@ struct INode : ParserNode {
 };
 
 struct JNode : ParserNode {
+	JNode();
 		Constant constant;
 
 		void node_information();

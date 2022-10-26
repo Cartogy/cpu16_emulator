@@ -1,6 +1,9 @@
 #include "parsernode.hpp"
 #include <iostream>
 
+ParserNode::ParserNode() {
+}
+
 void ParserNode::set_node_type(std::string n_type) {
 	node_type = n_type;
 }
@@ -10,6 +13,13 @@ std::string ParserNode::get_node_type() {
 }
 
 void ParserNode::node_information() { }
+
+RNode::RNode() { 
+}
+INode::INode() {
+}
+JNode::JNode() {
+}
 
 void RNode::node_information() { 
 	std::cout << "RNode" << std::endl;

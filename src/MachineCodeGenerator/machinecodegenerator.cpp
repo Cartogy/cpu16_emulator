@@ -15,13 +15,20 @@ MachineCodeGenerator::MachineCodeGenerator() {
 	instruction_table["jmp"] = 2;
 }
 
+MachineCodeGenerator::~MachineCodeGenerator() {
+}
 
 std::vector<uint16_t> MachineCodeGenerator::generate_code(std::vector<ParserNode *> nodes) {
 	std::vector<uint16_t> instruction_codes;
 
 	for(int i = 0; i < nodes.size(); i++) {
-		ParserNode *node;
-		uint16_t code = node->encoding(instruction_table[node->get_node_type()]);
+		ParserNode *node = nodes[i];
+		uint16_t code = 0;
+		if (instruction_table.count(node->get_node_type()) > 0) {
+			code = node->encoding(instruction_table[node->get_node_type()]);
+		} else {
+			std::cout << "ERROR:Invalid Node Type" << std::endl;
+		}
 
 		instruction_codes.push_back(code);
 	}
