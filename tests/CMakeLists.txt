@@ -14,4 +14,6 @@ target_include_directories(test_stuff PUBLIC ${PROJECT_SOURCE_DIR}/src/Cpu/Instr
 # Have the 'src' folder be included in the directory.
 target_include_directories(test_stuff PUBLIC ${PROJECT_SOURCE_DIR}/src)
 
+# have the test files be copied to the build folder.
 configure_file("test_asm.asm" "test_asm.asm" COPYONLY)
+configure_file("test_two_asm.asm" "test_two_asm.asm" COPYONLY)

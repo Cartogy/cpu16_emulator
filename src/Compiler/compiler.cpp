@@ -1,3 +1,5 @@
+#include <sstream>
+#include <fstream>
 #include "compiler.hpp"
 
 Compiler::Compiler() : tokenizer(), parser(), machine_code_gen() {
@@ -23,4 +25,20 @@ std::vector<uint16_t> Compiler::compile_source(std::string source) {
 	}
 
 	return code_list;
+}
+
+std::vector<uint16_t> Compiler::compile_file(std::string file) {
+	std::ifstream input_stream;
+	input_stream.open(file);
+
+	std::vector<uint16_t> code;
+	std::string line;
+	std::stringstream src_string;
+	if (input_stream.is_open()) {
+		src_string << input_stream.rdbuf();
+
+		code = compile_source(src_string.str());
+	}
+
+	return code;
 }

@@ -5,6 +5,7 @@
 
 #include "Cpu/cpu.hpp"
 #include "OperatorTable/operator_table.hpp"
+#include "Compiler/compiler.hpp"
 
 class Emulator {
 	private:
@@ -12,6 +13,7 @@ class Emulator {
 		OperatorTable oper_table;
 		InstructionMemory<uint16_t> ins_mem;
 		Memory mem;
+		Compiler compiler;
 		//Parser parser;
 	public:
 		Emulator(uint16_t total_ops);

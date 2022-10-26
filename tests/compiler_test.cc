@@ -68,3 +68,22 @@ TEST_F(CompilerTest, MultipleInstructions) {
 		EXPECT_EQ(code_list[i], actual_code_list[i]);
 	}
 }
+
+TEST_F(CompilerTest, FileCompilation) {
+	std::vector<uint16_t> code_list;
+	code_list.push_back(add_ins);
+	code_list.push_back(sub_ins);
+	code_list.push_back(addi_ins);
+	code_list.push_back(jmp_ins);
+
+	std::stringstream src_stream;
+	src_stream << add_src << '\n' << sub_src << '\n' << addi_src << '\n' << jmp_src;
+
+	std::vector<uint16_t> actual_code_list = compiler.compile_file("test_two_asm.asm");
+
+	ASSERT_EQ(code_list.size(), actual_code_list.size());
+
+	for(int i = 0; i < actual_code_list.size(); i++) {
+		EXPECT_EQ(code_list[i], actual_code_list[i]);
+	}
+}

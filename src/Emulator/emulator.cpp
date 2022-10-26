@@ -2,10 +2,16 @@
 
 #include "emulator.hpp"
 
-Emulator::Emulator(uint16_t total_ops) : cpu(), ins_mem(), oper_table(total_ops) {}
+Emulator::Emulator(uint16_t total_ops) : cpu(), ins_mem(), oper_table(total_ops), compiler() {}
 
 void Emulator::execute_clock_cycle() {
 	// Fetch first instruction
+	// Check if computation has halted.
+	if (*cpu.get_pc_address() > ins_mem.total_instructions() || ins_mem.total_instructions() <= 0 ) {
+		std::cout << "End of Computation: No more Instructions." << std::endl;
+		return;
+	}
+
 	cpu.fetch_instruction(ins_mem);
 	uint16_t *pc_pointer = cpu.get_pc_address();
 
@@ -30,9 +36,21 @@ void Emulator::execute_clock_cycle() {
 }
 
 void Emulator::run() {
+	std::cout << "Starting Computation" << std::endl;
+	while(*cpu.get_pc_address() < ins_mem.total_instructions() && ins_mem.total_instructions() > 0) {
+		execute_clock_cycle();
+	}
+
+	std::cout << "End of Computation" << std::endl;
+
 }
 
 void Emulator::translate_instructions(std::string file_path) {
+	std::vector<uint16_t> code_ins = compiler.compile_file(file_path);
+
+	for(uint16_t ins : code_ins) {
+		add_instruction(ins);
+	}
 }
 
 void Emulator::add_instruction(uint16_t ins) {
