@@ -127,3 +127,8 @@ For this specific instance, the *MachineCode* is in a *uint16_t* format.
 With these three components, we can chain them together as follows:
 
 $$MachineCodeGenerator(Parser(Tokenizer(\text{``file-path"})))$$
+
+With a list of machine code instructions, we can add these instructions to the **InstructionMemory**.
+This is demonstrated in the **Emulator** implementation.
+
+The benefit of this functional approach is that we are able to isolate each component in order to test their functionality; isolating the bugs to their respective components.
