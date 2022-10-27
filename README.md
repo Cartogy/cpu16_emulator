@@ -102,7 +102,7 @@ It does so by implementing three components:
 
 The Tokenizer has the following type:
 
-$Tokenizer: filePath \to [TokenLine] $
+$$Tokenizer: filePath \to [TokenLine] $$
 
 THe *TokenLine* is a set of **Tokens** the represent a line in source assembly code.
 
@@ -110,7 +110,7 @@ THe *TokenLine* is a set of **Tokens** the represent a line in source assembly c
 
 The Parser has the following type:
 
-$Parser: [TokenLine] \to [ParserNode]$
+$$Parser: [TokenLine] \to [ParserNode]$$
 
 that ensures the *grammar* of the code is followed.
 As the assembly code has an instruction per line, a *parser node* represents the specific instruction in a line.
@@ -119,11 +119,11 @@ As the assembly code has an instruction per line, a *parser node* represents the
 
 The Machine Code Generator has the following type:
 
-$MachineCodeGenerator: [ParserNode] \to [MachineCode]$
+$$MachineCodeGenerator: [ParserNode] \to [MachineCode]$$
 
 that maps the ParserNode to the corresponding *machine code*.
 For this specific instance, the *MachineCode* is in a *uint16_t* format.
 
 With these three components, we can chaing them together as follows:
 
-$MachineCodeGenerator(Parser(Tokenizer(<file-path>)))$
+$$MachineCodeGenerator(Parser(Tokenizer("file-path")))$$
