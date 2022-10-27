@@ -126,4 +126,4 @@ For this specific instance, the *MachineCode* is in a *uint16_t* format.
 
 With these three components, we can chain them together as follows:
 
-$$MachineCodeGenerator(Parser(Tokenizer(\text{"file-path"})))$$
+$$MachineCodeGenerator(Parser(Tokenizer(\text{``file-path"})))$$
