@@ -104,7 +104,7 @@ The Tokenizer has the following type:
 
 $$Tokenizer: filePath \to [TokenLine] $$
 
-THe *TokenLine* is a set of **Tokens** the represent a line in source assembly code.
+The *TokenLine* is a set of **Tokens** the represent a line in source assembly code.
 
 ### Parser
 
@@ -124,6 +124,6 @@ $$MachineCodeGenerator: [ParserNode] \to [MachineCode]$$
 that maps the ParserNode to the corresponding *machine code*.
 For this specific instance, the *MachineCode* is in a *uint16_t* format.
 
-With these three components, we can chaing them together as follows:
+With these three components, we can chain them together as follows:
 
-$$MachineCodeGenerator(Parser(Tokenizer("file-path")))$$
+$$MachineCodeGenerator(Parser(Tokenizer(\text{"file-path"})))$$
