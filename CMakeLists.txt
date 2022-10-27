@@ -5,6 +5,7 @@ project(CPUEMU)
 
 
 set(CMAKE_CXX_STANDARD 14)
+# Have the build command generate the 'compile_commands.json'.
 set(CMAKE_EXPORT_COMPILE_COMMANDS True)
 
 include(FetchContent)

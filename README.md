@@ -49,14 +49,20 @@
 
 The central component is the **Emulator** that connects all the components required to emulate a Von Neumann Architecture CPU.
 
+
+
 ## Emulator
 
 The Emulator is an *abstract class*. For every new CPU and the specified Instruction Set, a new class (e.g., Emulator16) will have to be defined.
 This has been done with the **Emulator16** class
 
+![Emulator Diagram](Emulator.drawio.png)
+
 ### Emulator16
 The **Emulator16** provides a set of possible operations that the cpu can execute.
 These operators are stored in a **OperatorTable**.
+
+![Emulator Diagram](Emulator16.drawio.png)
 
 ## OperatorTable
 An **OperatorTable** is a *map* to all the possible operations that the cpu can execute.
@@ -84,12 +90,40 @@ Before executing, the CPU must fetch the next instruction from the **Instruction
 The **InstructionMemory** stores all the available instructions for the CPU to execute.
 
 
+## Compiler
 
-# Functionality to Add
+The compiler is responsible for translating the assembly source code into the machine code.
+It does so by implementing three components:
+* Tokenizer
+* parser
+* MachineCodeGenerator
 
-Much of the functionality is still a work in progress.
+### Tokenizer
 
-* [ ] Parse a text file with instructions to translate them to uint16_t, in order to add them to the InstructionMemory.
-* [ ] Implement the *run* function in Emulator to emulate the repeated execution of instructions.
+The Tokenizer has the following type:
 
-* [ ] (Improve/organize use of CMake)
+$Tokenizer: filePath \to [TokenLine] $
+
+THe *TokenLine* is a set of **Tokens** the represent a line in source assembly code.
+
+### Parser
+
+The Parser has the following type:
+
+$Parser: [TokenLine] \to [ParserNode]$
+
+that ensures the *grammar* of the code is followed.
+As the assembly code has an instruction per line, a *parser node* represents the specific instruction in a line.
+
+### Machine Code Generator
+
+The Machine Code Generator has the following type:
+
+$MachineCodeGenerator: [ParserNode] \to [MachineCode]$
+
+that maps the ParserNode to the corresponding *machine code*.
+For this specific instance, the *MachineCode* is in a *uint16_t* format.
+
+With these three components, we can chaing them together as follows:
+
+$MachineCodeGenerator(Parser(Tokenizer(<file-path>)))$
