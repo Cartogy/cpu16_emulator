@@ -53,6 +53,10 @@ The central component is the **Emulator** that connects all the components requi
 
 ![Micro-Architecture](micro_arch.png)
 
+The single-cycle execution is demonstrated above the diagram.
+The control signals are not implemented as shown in the diagram, in the emulator.
+For this reason, the *control operator* has been implemented using a different model.
+
 ## Emulator
 
 The Emulator is an *abstract class*. For every new CPU and the specified Instruction Set, a new class (e.g., Emulator16) will have to be defined.
