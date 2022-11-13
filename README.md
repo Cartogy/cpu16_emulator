@@ -49,7 +49,9 @@
 
 The central component is the **Emulator** that connects all the components required to emulate a Von Neumann Architecture CPU.
 
+# Micro-Architecture
 
+![Micro-Architecture](micro_arch.png)
 
 ## Emulator
 
